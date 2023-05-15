@@ -1,0 +1,99 @@
+﻿@model ShowGroundDetailViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+    <div>
+        <h4>ShowGround</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ShowGround.ShowGroundName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ShowGround.ShowGroundName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ShowGround.Address)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ShowGround.Address)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ShowGround.Capacity)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ShowGround.Capacity)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ShowGround.District)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ShowGround.District.DistrictName)
+            </dd>
+        </dl>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Kategori
+                </th>
+                <th>
+                    Kategori
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ShowGrdSubCat showGrdSubCat in Model.ShowGrdSubCatList)
+            {
+                <tr>
+                    <td>
+                        @showGrdSubCat.SubCategory.SubCategoryName
+                    </td>
+                    <td>
+                        x
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+
+
+    <div>
+        <form asp-controller="EtkinlikYeri" asp-action="AddSubCategoryToShowGround" asp-route-id="@Model.ShowGround.ShowGroundID">
+            <select name="SubCategoryID">
+                <option value="0">--ALT KATEGORİ SEÇİNİZ--</option>
+
+                @foreach (SubCategory subCategory in Model.SubCategoryList)
+                {
+                    <option value="@subCategory.SubCategoryID">@subCategory.SubCategoryName</option>
+                }
+            </select>
+            <div class="form-group">
+                <input type="submit" value="Alt kategoriyi ekle" class="btn btn-primary" />
+            </div>
+
+
+        </form>
+    </div>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.ShowGround.ShowGroundID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</body>
+</html>

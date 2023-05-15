@@ -1,0 +1,45 @@
+﻿@model LoginViewModel
+
+
+
+
+
+<div class="login-register-area pt-95 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                        <div class="login-register-wrapper">
+                            <div class="login-register-tab-list nav">
+                                <a class="active" data-toggle="tab" >
+                                    <h4> Giriş Yap </h4>
+                                </a>
+                               
+                            </div>
+                            
+                                
+                                    <div class="login-form-container">
+                                        <div class="login-register-form">
+                                            <form asp-controller="Hesap" asp-action="Giris" method="post">
+                                                <div asp-validation-summary="All" class="text-danger"></div>
+                                                <input type="text" name="Emaill" placeholder="Kullanıcı Adı" value="@Model.Emaill">
+                                                <input type="password" name="Passwordd" placeholder="Şifre">
+                                                <div class="button-box">
+                                                    <div class="login-toggle-btn">
+                                                        <input type="checkbox">
+                                                        <label>Beni Hatırla</label>
+                                                        <a asp-controller="Hesap" asp-action="SifremiUnuttum">&nbsp; Şifremi Unuttum &nbsp; </a>
+                                                        <a asp-controller="Hesap" asp-action="KayitOl">&nbsp; Üye ol &nbsp;</a>
+                                                    </div>
+                                                    <button type="submit"><span>GİRİŞ YAP</span></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
